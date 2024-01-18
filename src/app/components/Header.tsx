@@ -38,9 +38,9 @@ const Header: React.FC = () => {
   }, [menuRef]);
 
   return (
-    <header className="bg-transparent text-black p-4 flex justify-between items-center ">
+    <header className=" text-black p-4 flex justify-between items-center w-full ">
       <h1 className="text-3xl font-bold">Lugetech</h1>
-      <div className="hidden justify-center items-center md:flex">
+      <div className="hidden justify-center items-center md:flex ">
         <ul className="flex justify-center items-center space-x-4">
           {navLinks.map((link, index) => (
             <li key={index}>
@@ -60,7 +60,7 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div
           ref={menuRef}
-          className="absolute top-0 left-0 h-screen w-full bg-white flex flex-col items-center justify-center"
+          className="absolute top-0 left-0 h-screen w-full bg-white flex flex-col items-center justify-center z-50"
         >
           <button onClick={toggleMenu} className="absolute top-4 right-4">
             <FaTimes /> {/* Close icon */}

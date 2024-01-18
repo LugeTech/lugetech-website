@@ -20,7 +20,9 @@ const MainPage: React.FC = () => {
 
   return (
     <>
-      <Header />
+      <div className="flex w-full z-50 ">
+        <Header />
+      </div>
 
       {/* Hero Section with Faded Background Image */}
       <div className="text-white text-center py-20 relative hero-section">
