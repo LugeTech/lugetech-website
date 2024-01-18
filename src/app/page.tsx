@@ -6,8 +6,6 @@ import Footer from "@/app/components/Footer";
 import { GetGithubPinnedRepos } from "./lib/serverActions";
 
 const MainPage: React.FC = async () => {
-  const pinned = await GetGithubPinnedRepos("clinteastman01");
-  console.log(pinned);
   return (
     <>
       <Header />
@@ -48,7 +46,7 @@ const MainPage: React.FC = async () => {
         {/* Consider a background pattern */}
         <div className="container mx-auto text-center animate-fadeIn">
           <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
-          <p>We're ready to help you. Contact us today.</p>
+          <p>We are ready to help you. Contact us today.</p>
           <button className="bg-blue-500 text-white px-5 py-2 rounded-full font-bold mt-4 hover:shadow-lg transition duration-300">
             Contact Us
           </button>

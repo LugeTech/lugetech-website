@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { GetGithubProfile } from "../lib/serverActions";
 import { profile as ProfileType } from "@/app/lib/interfaces";
 import {
@@ -7,7 +8,6 @@ import {
   FaEnvelope,
   FaTwitter,
   FaCode,
-  FaStar,
   FaUserFriends,
   FaUserPlus,
 } from "react-icons/fa";
@@ -28,7 +28,9 @@ const GitHubProfile: React.FC<{ username: string }> = async ({ username }) => {
     <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
       {/* Profile Header */}
       <div className="sm:flex sm:items-center px-6 py-4">
-        <img
+        <Image
+          width={96}
+          height={96}
           className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full"
           src={profileData.avatar_url}
           alt={profileData.name}

@@ -15,8 +15,6 @@ export const GetGithubRepos = async (username: string): Promise<Repo[]> => {
 };
 
 export const GetGithubPinnedRepos = async (username: string) => {
-  console.log("here");
   const pinned = await getPinnedRepos_v2(username);
-  console.log(pinned);
   return pinned;
 };
