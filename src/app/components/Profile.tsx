@@ -16,7 +16,6 @@ const GitHubProfile: React.FC<{ username: string }> = async ({ username }) => {
   const profileData = (await GetGithubProfile(username)) as ProfileType;
   const pinnedRepos = (await GetGithubPinnedRepos(username)) as Repository[];
 
-  console.log(profileData);
   if (!profileData) {
     return <div>Loading...</div>;
   }

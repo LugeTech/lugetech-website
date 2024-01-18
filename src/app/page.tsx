@@ -3,6 +3,7 @@ import React from "react";
 import GitHubProfile from "@/app/components/Profile";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import Services from "./components/Services";
 
 const MainPage: React.FC = () => {
   // Function to shuffle the array of usernames
@@ -44,12 +45,8 @@ const MainPage: React.FC = () => {
         </div>
       </main>
 
-      {/* Features or Services Section */}
-      <section className="container mx-auto my-8">
-        <h2 className="text-3xl font-bold mb-4">Our Services</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Add service cards with icons and hover effects */}
-        </div>
+      <section className="services-section container mx-auto my-8">
+        <Services />
       </section>
 
       {/* Contact or CTA Section */}

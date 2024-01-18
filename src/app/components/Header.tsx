@@ -1,42 +1,69 @@
-// src/components/Header.tsx
-import React from "react";
-import Image from "next/image";
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
+
+type NavLink = {
+  href: string;
+  title: string;
+};
+
+const navLinks: NavLink[] = [
+  { href: "/about", title: "About" },
+  { href: "/services", title: "Services" },
+  { href: "/contact", title: "Contact" },
+  // Additional links...
+];
 
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  // Close menu if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuRef]);
+
   return (
     <header className="bg-transparent text-black p-4 flex justify-between items-center">
-      <div className="flex items-center">
-        <h1 className="text-3xl font-bold">Lugetech</h1>
-      </div>
-      <nav>
-        <ul className="flex space-x-4">
-          <li>
-            <a
-              href="/about"
-              className="hover:text-blue-300 transition-colors duration-300"
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a
-              href="/services"
-              className="hover:text-blue-300 transition-colors duration-300"
-            >
-              Services
-            </a>
-          </li>
-          <li>
-            <a
-              href="/contact"
-              className="hover:text-blue-300 transition-colors duration-300"
-            >
-              Contact
-            </a>
-          </li>
-          {/* Add more links as needed */}
-        </ul>
-      </nav>
+      <h1 className="text-3xl font-bold">Lugetech</h1>
+      <button className="md:hidden" onClick={toggleMenu}>
+        <FaBars />
+      </button>
+      {isMenuOpen && (
+        <div
+          ref={menuRef}
+          className="absolute top-0 left-0 h-screen w-full bg-white flex flex-col items-center justify-center"
+        >
+          <button onClick={toggleMenu} className="absolute top-4 right-4">
+            <FaTimes /> {/* Close icon */}
+          </button>
+          <ul className="flex flex-col items-center space-y-4">
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <a
+                  href={link.href}
+                  className="hover:text-blue-300 transition-colors duration-300"
+                >
+                  {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </header>
   );
 };
