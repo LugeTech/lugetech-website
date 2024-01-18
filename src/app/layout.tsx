@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
+export const revalidate = 0; // revalidate at most every hour
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
