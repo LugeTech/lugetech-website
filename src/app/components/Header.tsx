@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React, { useState, useRef, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 
@@ -37,8 +38,22 @@ const Header: React.FC = () => {
   }, [menuRef]);
 
   return (
-    <header className="bg-transparent text-black p-4 flex justify-between items-center">
+    <header className="bg-transparent text-black p-4 flex justify-between items-center ">
       <h1 className="text-3xl font-bold">Lugetech</h1>
+      <div className="hidden justify-center items-center md:flex">
+        <ul className="flex justify-center items-center space-x-4">
+          {navLinks.map((link, index) => (
+            <li key={index}>
+              <Link
+                href={link.href}
+                className="hover:text-blue-300 transition-colors duration-300"
+              >
+                {link.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
       <button className="md:hidden" onClick={toggleMenu}>
         <FaBars />
       </button>
@@ -50,7 +65,7 @@ const Header: React.FC = () => {
           <button onClick={toggleMenu} className="absolute top-4 right-4">
             <FaTimes /> {/* Close icon */}
           </button>
-          <ul className="flex flex-col items-center space-y-4">
+          <ul className="bg-white flex flex-col items-center space-y-4">
             {navLinks.map((link, index) => (
               <li key={index}>
                 <a
