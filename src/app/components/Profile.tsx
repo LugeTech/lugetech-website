@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { GetGithubProfile } from "../lib/serverActions";
-import { profile as ProfileType } from "@/app/lib/interfaces";
+import { GetGithubProfile, GetGithubPinnedRepos } from "../lib/serverActions";
+import { profile as ProfileType, Repository } from "@/app/lib/interfaces";
 import {
   FaBuilding,
   FaLink,
@@ -14,24 +14,20 @@ import {
 
 const GitHubProfile: React.FC<{ username: string }> = async ({ username }) => {
   const profileData = (await GetGithubProfile(username)) as ProfileType;
+  const pinnedRepos = (await GetGithubPinnedRepos(username)) as Repository[];
+
   if (!profileData) {
     return <div>Loading...</div>;
   }
-
-  // Mock data for pinned repositories
-  const pinnedRepos = [
-    { name: "Repo 1", description: "Description of Repo 1", stars: 150 },
-    { name: "Repo 2", description: "Description of Repo 2", stars: 250 },
-  ];
 
   return (
     <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
       {/* Profile Header */}
       <div className="sm:flex sm:items-center px-6 py-4">
         <Image
-          width={96}
-          height={96}
-          className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-24 rounded-full"
+          width={100}
+          height={100}
+          className="block mx-auto sm:mx-0 sm:flex-shrink-0 h-40 w-40 md:h-20 md:w-20 lg:h-40 lg:w-40 rounded-full"
           src={profileData.avatar_url}
           alt={profileData.name}
         />
@@ -106,9 +102,10 @@ const GitHubProfile: React.FC<{ username: string }> = async ({ username }) => {
             key={index}
             className="my-2 p-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors duration-300"
           >
-            <h4 className="font-bold">{repo.name}</h4>
+            <h4 className="font-bold">{repo.repo}</h4>
             <p className="text-sm text-gray-600">{repo.description}</p>
-            <span className="text-sm font-semibold">{`⭐ ${repo.stars}`}</span>
+            <p className="text-sm font-semibold">{`📝 ${repo.languages}`}</p>
+            <span className="text-sm font-semibold">{`⭐️ ${repo.stars}`}</span>
           </div>
         ))}
       </div>
