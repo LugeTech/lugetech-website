@@ -1,4 +1,3 @@
-
 export interface profile {
   login: string;
   id: number;
@@ -135,4 +134,11 @@ export interface Repo {
   open_issues: number;
   watchers: number;
   default_branch: string;
+}
+
+export interface Repository {
+  repo: string;
+  description: string;
+  languages: string;
+  stars: number;
 }
