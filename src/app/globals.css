@@ -31,13 +31,13 @@
   animation: fadeIn 1.5s ease-out;
 }
 
-.hero-section {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url("/hero1.jpg") no-repeat center center;
-  background-size: cover;
-  position: relative;
-}
+/* .hero-section { */
+/*   background: */
+/*     linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), */
+/*     url("/hero2.jpg") no-repeat center center; */
+/*   background-size: cover; */
+/*   position: relative; */
+/* } */
 
 @keyframes fadeIn {
   from {
