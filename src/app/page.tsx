@@ -47,11 +47,11 @@ const MainPage: React.FC = () => {
       </div>
 
       {/* Hero Section with Faded Background Image */}
-      <div className="text-white text-center py-20 relative hero-section">
-        <h1 className="text-4xl font-bold mb-2 z-10 relative">
+      <div className="text-white text-center py-20 relative hero-section bg-blue-500">
+        <h1 className="text-4xl font-bold mb-2 z-10 relative ">
           Innovating the Future
         </h1>
-        <p className="mb-4 z-10 relative">
+        <p className="mb-4 z-10 relative ">
           Join us on a journey of technological discovery
         </p>
         <button className="bg-white text-blue-800 px-5 py-2 rounded-full font-bold hover:bg-blue-500 hover:text-white transition duration-300 z-10 relative">
