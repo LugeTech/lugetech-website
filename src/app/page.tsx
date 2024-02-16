@@ -7,6 +7,10 @@ import Services from "./components/Services";
 import Project from "./components/Project";
 
 const MainPage: React.FC = () => {
+  interface iProfileDesign {
+    username: string[];
+    bgColours: string[];
+  }
   // Function to shuffle the array of usernames
   const shuffleUsernames = (usernames: string[]) => {
     for (let i = usernames.length - 1; i > 0; i--) {
@@ -15,6 +19,20 @@ const MainPage: React.FC = () => {
     }
     return usernames;
   };
+
+
+  // Shuffled usernames
+  const shuffledUsernames = shuffleUsernames(["ktappdev", "clinteastman01"]);
+
+  const shuffleBgColours = (colours: string[]) => {
+    for (let i = colours.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [colours[i], colours[j]] = [colours[j], colours[i]];
+    }
+    return colours;
+  };
+
+  let shuffeledBgColours = shuffleBgColours(["#faebd7", "#e6e6fa"]);
 
   const apps = [
     {
@@ -33,12 +51,9 @@ const MainPage: React.FC = () => {
       title: " Automatic Power Manager",
       description: "Allows you to automatically switch to High Performance mode based on what apps you are running",
       link: "https://github.com/KTAppDev/Switch-Power-profile/releases/tag/1.09",
-      c: "#ffdab9"
+      c: "#faebd7"
     }
   ]
-
-  // Shuffled usernames
-  const shuffledUsernames = shuffleUsernames(["ktappdev", "clinteastman01"]);
 
   return (
     <>
@@ -47,9 +62,9 @@ const MainPage: React.FC = () => {
       </div>
 
       {/* Hero Section with Faded Background Image */}
-      <div className="text-white text-center py-20 relative hero-section bg-blue-500">
+      <div className="text-black text-center py-20 relative hero-section bg-white]">
         <h1 className="text-4xl font-bold mb-2 z-10 relative ">
-          Innovating the Future
+          ["Innovating the Future"]
         </h1>
         <p className="mb-4 z-10 relative ">
           Join us on a journey of technological discovery
@@ -71,8 +86,8 @@ const MainPage: React.FC = () => {
       <main className="container mx-auto my-8">
         <h2 className="text-3xl font-bold mb-8">Meet Your Engineers</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {shuffledUsernames.map((username) => (
-            <GitHubProfile key={username} username={username} />
+          {shuffledUsernames.map((username, index) => (
+            <GitHubProfile key={username} username={username} bg={shuffeledBgColours[index]} />
           ))}
         </div>
       </main>

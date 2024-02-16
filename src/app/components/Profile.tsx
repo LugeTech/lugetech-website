@@ -12,7 +12,7 @@ import {
   FaUserPlus,
 } from "react-icons/fa";
 
-const GitHubProfile: React.FC<{ username: string }> = async ({ username }) => {
+const GitHubProfile: React.FC<{ username: string, bg: string }> = async ({ username, bg }) => {
   const profileData = (await GetGithubProfile(username)) as ProfileType;
   const pinnedRepos = (await GetGithubPinnedRepos(username)) as Repository[];
 
@@ -20,8 +20,9 @@ const GitHubProfile: React.FC<{ username: string }> = async ({ username }) => {
     return <div>Loading...</div>;
   }
 
+
   return (
-    <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="max-w-2xl mx-auto shadow-lg rounded-lg overflow-hidden" style={{ backgroundColor: `${bg}` }}>
       {/* Profile Header */}
       <div className="sm:flex sm:items-center px-6 py-4">
         <Image
