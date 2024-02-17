@@ -63,7 +63,7 @@ const MainPage: React.FC = () => {
 
       {/* Hero Section with Faded Background Image */}
       <div className="text-black text-center py-20 relative hero-section bg-white]">
-        <h1 className="text-4xl font-bold mb-2 z-10 relative ">
+        <h1 className="text-2xl md:text-5xl font-bold mb-2 z-10 relative ">
           [Innovating the Future]
         </h1>
         <p className="mb-4 z-10 relative ">
